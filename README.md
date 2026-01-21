@@ -1,0 +1,122 @@
+# Sports Timer - Svelte Application
+
+A responsive single-page web application for sports timing with countdown functionality.
+
+## Features
+
+✅ **Countdown Timer**: 2 or 3 minute options
+✅ **Visual Indicators**: Green → Yellow (last 30s) → Red (cooldown)
+✅ **Audio Alerts**: Start/end beeps and 30-second warning
+✅ **Automatic Restart**: Timer restarts after 30-second cooldown
+✅ **Responsive Design**: Works on desktop, tablet, and mobile
+✅ **State Management**: Comprehensive timer state handling
+
+## Installation
+
+```bash
+npm install
+```
+
+## Development
+
+```bash
+npm run dev
+```
+
+This will start the development server at `http://localhost:5173`
+
+## Production Build
+
+```bash
+npm run build
+```
+
+This creates an optimized production build in the `dist/` directory.
+
+## Deployment
+
+The production build can be deployed to any static hosting service:
+
+### Netlify
+1. Drag and drop the `dist` folder to Netlify
+2. Or connect your GitHub repository
+
+### Vercel
+```bash
+npm install -g vercel
+vercel
+```
+
+### GitHub Pages
+```bash
+npm install gh-pages --save-dev
+```
+Add to package.json:
+```json
+"scripts": {
+  "deploy": "gh-pages -d dist"
+}
+```
+Then run:
+```bash
+npm run build
+npm run deploy
+```
+
+## Usage
+
+1. **Select Duration**: Choose 2 or 3 minutes
+2. **Start Timer**: Click START button
+3. **Timer Phases**:
+   - Green: Normal countdown
+   - Yellow: Last 30 seconds (with warning beep)
+   - Red: 30-second cooldown period
+4. **Automatic Restart**: Timer restarts after cooldown
+5. **Controls**: PAUSE and RESET buttons available during operation
+
+## Technical Stack
+
+- **Framework**: Svelte with Vite
+- **State Management**: Svelte Stores
+- **Audio**: Web Audio API
+- **Styling**: CSS with responsive design
+- **Build**: Vite for optimized production bundles
+
+## Project Structure
+
+```
+src/
+├── components/          # Reusable components
+│   ├── TimerDisplay.svelte  # Main timer display
+│   └── ControlPanel.svelte  # Timer controls
+├── lib/                 # Utility functions and stores
+│   ├── audio.js          # Audio management
+│   └── timerStore.js     # Timer state management
+├── App.svelte           # Main application
+└── main.js             # Entry point
+```
+
+## Testing
+
+Run the timer store tests:
+```bash
+node test-timer.js
+```
+
+Open `test-components.html` in a browser to verify component functionality.
+
+## Browser Support
+
+- Chrome 55+
+- Firefox 52+
+- Safari 11+
+- Edge 79+
+- Mobile browsers with Web Audio API support
+
+## License
+
+MIT License
+
+## Credits
+
+Built with ❤️ using Svelte and Vite
