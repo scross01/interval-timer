@@ -116,17 +116,17 @@
   });
 </script>
 
-<div class="control-panel">
-  <div class="duration-selector">
+<div class="controls-container-full">
+  <div class="duration-selector-full">
     <button 
-      class="duration-btn {($timerStore.timerDuration === 120 && $timerStore.state === 'idle') ? 'active' : ''}"
+      class="duration-btn-full {($timerStore.timerDuration === 120 && $timerStore.state === 'idle') ? 'active' : ''}"
       on:click={() => setDuration(2)}
       disabled={$timerStore.state !== 'idle'}
     >
       2 MIN
     </button>
     <button 
-      class="duration-btn {($timerStore.timerDuration === 180 && $timerStore.state === 'idle') ? 'active' : ''}"
+      class="duration-btn-full {($timerStore.timerDuration === 180 && $timerStore.state === 'idle') ? 'active' : ''}"
       on:click={() => setDuration(3)}
       disabled={$timerStore.state !== 'idle'}
     >
@@ -134,25 +134,25 @@
     </button>
   </div>
   
-  <div class="control-buttons">
+  <div class="control-buttons-full">
     <button 
-      class="control-btn start-btn"
+      class="control-btn-full start-btn"
       on:click={startTimer}
       disabled={$timerStore.state === 'running'}
     >
       START
     </button>
-    
+     
     <button 
-      class="control-btn pause-btn"
+      class="control-btn-full pause-btn"
       on:click={pauseTimer}
       disabled={$timerStore.state !== 'running'}
     >
       PAUSE
     </button>
-    
+     
     <button 
-      class="control-btn reset-btn"
+      class="control-btn-full reset-btn"
       on:click={resetTimer}
       disabled={$timerStore.state === 'idle'}
     >
@@ -162,79 +162,87 @@
 </div>
 
 <style>
-  .control-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-    margin: 2rem 0;
-    padding: 1.5rem;
+  .controls-container-full {
+    width: 100%;
+    padding: 1rem;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
   }
   
-  .duration-selector {
+  .duration-selector-full {
     display: flex;
     gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 100%;
   }
   
-  .duration-btn {
+  .duration-btn-full {
     padding: 0.8rem 1.5rem;
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
     font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     background-color: #f0f0f0;
     color: #333;
     transition: all 0.2s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+    flex: 1;
+    max-width: 180px;
   }
   
-  .duration-btn:hover:not(:disabled) {
+  .duration-btn-full:hover:not(:disabled) {
     background-color: #e0e0e0;
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
   }
   
-  .duration-btn:disabled {
+  .duration-btn-full:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
   
-  .duration-btn.active {
+  .duration-btn-full.active {
     background-color: #4CAF50;
     color: white;
     box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
   }
   
-  .control-buttons {
+  .control-buttons-full {
     display: flex;
     gap: 1rem;
+    justify-content: center;
+    width: 100%;
   }
   
-  .control-btn {
+  .control-btn-full {
     padding: 1rem 2rem;
-    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    font-size: clamp(1rem, 3vw, 1.4rem);
     font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 120px;
+    flex: 1;
+    max-width: 200px;
   }
   
-  .control-btn:hover:not(:disabled) {
+  .control-btn-full:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
-  .control-btn:active:not(:disabled) {
+  .control-btn-full:active:not(:disabled) {
     transform: translateY(0);
   }
   
-  .control-btn:disabled {
+  .control-btn-full:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
@@ -264,5 +272,95 @@
   
   .reset-btn:hover:not(:disabled) {
     background-color: #d32f2f;
+  }
+  
+  /* Landscape optimization - ensure buttons are touch-friendly */
+  @media (orientation: landscape) {
+    .duration-selector-full {
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .duration-btn-full {
+      padding: 0.7rem 1.2rem;
+      font-size: clamp(0.8rem, 2.2vw, 1.1rem);
+      min-width: 90px;
+    }
+    
+    .control-buttons-full {
+      gap: 0.8rem;
+    }
+    
+    .control-btn-full {
+      padding: 0.9rem 1.6rem;
+      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+      min-width: 100px;
+    }
+  }
+  
+  /* iPad Mini 6 specific optimizations */
+  @media only screen 
+    and (min-device-width: 744px) 
+    and (max-device-width: 1133px) 
+    and (-webkit-min-device-pixel-ratio: 2) {
+      
+    /* Portrait */
+    @media (orientation: portrait) {
+      .duration-btn-full {
+        padding: 0.9rem 1.6rem;
+        font-size: clamp(1rem, 2.8vw, 1.3rem);
+        min-width: 110px;
+      }
+      
+      .control-btn-full {
+        padding: 1.1rem 2.2rem;
+        font-size: clamp(1.1rem, 3.2vw, 1.5rem);
+        min-width: 130px;
+      }
+    }
+    
+    /* Landscape - touch-friendly buttons */
+    @media (orientation: landscape) {
+      .duration-btn-full {
+        padding: 0.8rem 1.4rem;
+        font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+        min-width: 100px;
+      }
+      
+      .control-btn-full {
+        padding: 1rem 1.8rem;
+        font-size: clamp(1rem, 2.8vw, 1.3rem);
+        min-width: 110px;
+      }
+    }
+  }
+  
+  /* Firefox specific adjustments */
+  @-moz-document url-prefix() {
+    .control-btn-full {
+      -moz-transition: all 0.2s ease;
+    }
+  }
+  
+  /* Small screens - stack buttons vertically */
+  @media (max-width: 480px) {
+    .control-buttons-full {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    
+    .control-btn-full {
+      width: 100%;
+      padding: 1rem;
+    }
+    
+    .duration-selector-full {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    
+    .duration-btn-full {
+      width: 100%;
+    }
   }
 </style>

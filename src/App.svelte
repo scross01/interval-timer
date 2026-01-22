@@ -10,63 +10,114 @@
   });
 </script>
 
-<main>
-  <h1>Sports Timer</h1>
+<main class="app-container">
+  <div class="timer-display-full">
+    <TimerDisplay />
+  </div>
   
-  <TimerDisplay />
-  
-  <ControlPanel />
-  
-  <div class="instructions">
-    <p>Select timer duration (2 or 3 minutes) and click START</p>
-    <p>Timer turns yellow at 30 seconds remaining</p>
-    <p>Red cooldown period starts after timer completes</p>
-    <p>Timer automatically restarts after cooldown</p>
+  <div class="controls-container">
+    <ControlPanel />
   </div>
 </main>
 
 <style>
-  main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+  .app-container {
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
     min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  
+  .timer-display-full {
+    flex: 1;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem;
+    box-sizing: border-box;
   }
   
-  h1 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    color: #333;
-    margin-bottom: 2rem;
-    background: linear-gradient(45deg, #4CAF50, #2E7D32);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  .controls-container {
+    width: 100%;
+    padding: 0.8rem;
+    box-sizing: border-box;
   }
   
-  .instructions {
-    margin-top: 3rem;
-    font-size: clamp(0.8rem, 2vw, 1rem);
-    color: #666;
-    line-height: 1.6;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    max-width: 600px;
+  /* Base layout - maximize timer visibility */
+  .timer-display-full {
+    min-height: 55vh;
   }
   
-  .instructions p {
-    margin: 0.5rem 0;
+  /* Landscape optimization - maximize horizontal space */
+  @media (orientation: landscape) {
+    .timer-display-full {
+      min-height: 65vh;
+      flex: 2;
+    }
+    
+    .controls-container {
+      padding: 0.6rem;
+      min-height: 28vh;
+    }
   }
   
-  .instructions p::before {
-    content: "• ";
-    color: #4CAF50;
-    margin-right: 0.5rem;
+  /* iPad Mini 6 specific optimizations */
+  @media only screen 
+    and (min-device-width: 744px) 
+    and (max-device-width: 1133px) 
+    and (-webkit-min-device-pixel-ratio: 2) {
+      
+    /* Portrait */
+    @media (orientation: portrait) {
+      .timer-display-full {
+        min-height: 60vh;
+        flex: 2.5;
+      }
+    }
+    
+    /* Landscape - maximize screen usage */
+    @media (orientation: landscape) {
+      .timer-display-full {
+        min-height: 70vh;
+        flex: 2.5;
+      }
+      
+      .controls-container {
+        min-height: 25vh;
+        padding: 0.5rem;
+      }
+    }
+  }
+  
+  /* Firefox specific adjustments */
+  @-moz-document url-prefix() {
+    .timer-display-full {
+      min-height: calc(60vh + 2px);
+    }
+    
+    @media (orientation: landscape) {
+      .timer-display-full {
+        min-height: calc(68vh + 2px);
+      }
+    }
+  }
+  
+  /* Small screens */
+  @media (max-width: 480px) {
+    .timer-display-full {
+      min-height: 55vh;
+      padding: 0.8rem;
+    }
+    
+    .controls-container {
+      padding: 0.8rem;
+    }
   }
 </style>

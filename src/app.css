@@ -81,6 +81,72 @@ button:focus-visible {
 /* Sports Timer specific styles */
 .sports-timer {
   width: 100%;
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
+}
+
+/* Responsive layout for the entire application */
+body {
+  overflow-x: hidden;
+  touch-action: manipulation;
+}
+
+/* iPad Mini 6 specific optimizations */
+@media only screen 
+  and (min-device-width: 744px) 
+  and (max-device-width: 1133px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+    
+  /* Portrait orientation */
+  @media (orientation: portrait) {
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #app {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
+  /* Landscape orientation */
+  @media (orientation: landscape) {
+    body {
+      min-height: 100vh;
+    }
+    
+    #app {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+/* Firefox specific adjustments */
+@-moz-document url-prefix() {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(76, 175, 80, 0.5) transparent;
+  }
+  
+  body {
+    -moz-osx-font-smoothing: grayscale;
+    -moz-text-size-adjust: none;
+  }
+}
+
+/* Ensure proper scaling on mobile devices */
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+  
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
 }
