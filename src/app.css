@@ -24,10 +24,25 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  overflow: hidden;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100vw;
+  height: 100vh;
+}
+
+html {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
@@ -78,75 +93,23 @@ button:focus-visible {
   }
 }
 
-/* Sports Timer specific styles */
-.sports-timer {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-}
+/* Sports Timer specific base styles - already handled above */
 
-/* Responsive layout for the entire application */
-body {
-  overflow-x: hidden;
-  touch-action: manipulation;
-}
-
-/* iPad Mini 6 specific optimizations */
-@media only screen 
-  and (min-device-width: 744px) 
-  and (max-device-width: 1133px) 
-  and (-webkit-min-device-pixel-ratio: 2) {
-    
-  /* Portrait orientation */
-  @media (orientation: portrait) {
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    #app {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
+/* Global animations that are shared across components */
+@keyframes pulse {
+  from {
+    transform: scale(1);
   }
-  
-  /* Landscape orientation */
-  @media (orientation: landscape) {
-    body {
-      min-height: 100vh;
-    }
-    
-    #app {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+  to {
+    transform: scale(1.05);
   }
 }
 
-/* Firefox specific adjustments */
-@-moz-document url-prefix() {
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(76, 175, 80, 0.5) transparent;
+@keyframes flash {
+  from {
+    opacity: 1;
   }
-  
-  body {
-    -moz-osx-font-smoothing: grayscale;
-    -moz-text-size-adjust: none;
-  }
-}
-
-/* Ensure proper scaling on mobile devices */
-@media (max-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-  
-  body {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
+  to {
+    opacity: 0.8;
   }
 }

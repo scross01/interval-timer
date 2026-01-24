@@ -11,11 +11,11 @@
 </script>
 
 <main class="app-container">
-  <div class="timer-display-full">
+  <div class="timer-section">
     <TimerDisplay />
   </div>
   
-  <div class="controls-container">
+  <div class="controls-section">
     <ControlPanel />
   </div>
 </main>
@@ -26,98 +26,64 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    width: 100vw;
     height: 100vh;
+    width: 100vw;
     overflow: hidden;
     box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
   
-  .timer-display-full {
+  .timer-section {
     flex: 1;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0.8rem;
+    padding: 1rem;
     box-sizing: border-box;
+    min-height: 60vh;
+    max-height: 70vh;
   }
   
-  .controls-container {
+  .controls-section {
     width: 100%;
-    padding: 0.8rem;
+    padding: 1rem;
     box-sizing: border-box;
+    min-height: 25vh;
+    max-height: 35vh;
   }
   
-  /* Base layout - maximize timer visibility */
-  .timer-display-full {
-    min-height: 55vh;
-  }
-  
-  /* Landscape optimization - maximize horizontal space */
+  /* Responsive layout based on orientation */
   @media (orientation: landscape) {
-    .timer-display-full {
+    .timer-section {
       min-height: 65vh;
-      flex: 2;
+      max-height: 75vh;
+      flex: 1.5;
     }
     
-    .controls-container {
-      padding: 0.6rem;
-      min-height: 28vh;
-    }
-  }
-  
-  /* iPad Mini 6 specific optimizations */
-  @media only screen 
-    and (min-device-width: 744px) 
-    and (max-device-width: 1133px) 
-    and (-webkit-min-device-pixel-ratio: 2) {
-      
-    /* Portrait */
-    @media (orientation: portrait) {
-      .timer-display-full {
-        min-height: 60vh;
-        flex: 2.5;
-      }
-    }
-    
-    /* Landscape - maximize screen usage */
-    @media (orientation: landscape) {
-      .timer-display-full {
-        min-height: 70vh;
-        flex: 2.5;
-      }
-      
-      .controls-container {
-        min-height: 25vh;
-        padding: 0.5rem;
-      }
-    }
-  }
-  
-  /* Firefox specific adjustments */
-  @-moz-document url-prefix() {
-    .timer-display-full {
-      min-height: calc(60vh + 2px);
-    }
-    
-    @media (orientation: landscape) {
-      .timer-display-full {
-        min-height: calc(68vh + 2px);
-      }
-    }
-  }
-  
-  /* Small screens */
-  @media (max-width: 480px) {
-    .timer-display-full {
-      min-height: 55vh;
+    .controls-section {
       padding: 0.8rem;
-    }
-    
-    .controls-container {
-      padding: 0.8rem;
+      min-height: 20vh;
+      max-height: 30vh;
     }
   }
+  
+  /* Extra small screens */
+  @media (max-width: 360px) {
+    .timer-section {
+      min-height: 45vh;
+      max-height: 60vh;
+      padding: 0.5rem;
+    }
+    
+    .controls-section {
+      padding: 0.5rem;
+      min-height: 35vh;
+      max-height: 45vh;
+    }
+  }
+  
 </style>
