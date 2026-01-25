@@ -1,4 +1,4 @@
-// Audio Manager for Sports Timer
+// Audio Manager for Interval Timer
 // Handles all audio notifications for the timer
 
 let audioContext = null;

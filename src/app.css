@@ -93,7 +93,7 @@ button:focus-visible {
   }
 }
 
-/* Sports Timer specific base styles - already handled above */
+/* Interval Timer specific base styles - already handled above */
 
 /* Global animations that are shared across components */
 @keyframes pulse {
