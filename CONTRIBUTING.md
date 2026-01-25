@@ -21,3 +21,35 @@ src/
 ├── App.svelte               # Main application
 └── main.js                  # Entry point
 ```
+
+## Local Installation
+
+```bash
+npm install
+```
+
+## Development
+
+```bash
+npm run dev
+```
+
+This will start the development server at `http://localhost:5173`
+
+## Production Build
+
+```bash
+npm run build
+```
+
+This creates an optimized production build in the `dist/` directory.
+
+## Deployment
+
+The production build can be deployed to any static hosting service:
+
+### GitHub Pages
+
+```bash
+npm run deploy
+```

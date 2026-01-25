@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview --host"
+    "preview": "vite preview --host",
+    "deploy": "gh-pages -d dist",
+    "homepage": "https://scross01.github.io/interval-timer"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
+    "gh-pages": "^6.3.0",
     "svelte": "^5.43.8",
     "vite": "^7.2.4"
   }
