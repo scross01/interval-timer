@@ -7,7 +7,7 @@ let audioBufferCache = {};
 // Initialize audio context
 function initAudioContext() {
   if (!audioContext) {
-    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    audioContext = new (window.AudioContext)();
   }
   return audioContext;
 }
