@@ -70,14 +70,13 @@
                });
              }, 1000);
              
-             // Return the cooldown state manually
-             return {
-               ...state,
-               state: 'cooldown',
-               isCooldown: true,
-               timeLeft: 30,
-               colorState: 'red'
-             };
+              // Return the cooldown state manually
+              return {
+                ...state,
+                state: 'cooldown',
+                isCooldown: true,
+                timeLeft: 30
+              };
            }
           
            return {

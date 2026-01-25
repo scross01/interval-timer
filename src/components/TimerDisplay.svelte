@@ -8,7 +8,7 @@
     {$formattedTime}
   </div>
   <div class="timer-status">
-    {#if $timerStore.isCooldown}
+    {#if $timerColor === 'red' && $timerStore.isCooldown}
       <span>COOLDOWN</span>
     {:else if $timerStore.state === 'running'}
       <span>RUNNING</span>
