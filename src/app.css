@@ -12,6 +12,7 @@
   --phase-warning: #ffc107;
   --phase-warning-hover: #e6ac00;
   --phase-warning-deep: #f57f17;
+  --phase-warning-ember: #8f2809;
   --phase-cooldown: #f44336;
   --phase-cooldown-hover: #d32f2f;
   --phase-cooldown-deep: #c62828;
@@ -27,6 +28,15 @@
   --status-chip-border: rgba(255, 255, 255, 0.18);
   --focus-ring: #ffffff;
 
+  /* Action fills (deepened for label contrast) */
+  --action-work: #2e7d32;
+  --action-work-hover: #1b5e20;
+  --action-warning: #ffc107;
+  --action-warning-hover: #e6ac00;
+  --on-action-warning: #242424;
+  --action-cooldown: #d32f2f;
+  --action-cooldown-hover: #b71c1c;
+
   /* Type roles */
   --font-display: 'Courier New', Courier, monospace;
   --font-ui: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -38,7 +48,6 @@
   --type-status-xs: clamp(0.85rem, 3.5vw, 1.1rem);
   --type-control: clamp(0.9rem, 2.5vw, 1.15rem);
   --type-duration: clamp(0.85rem, 2.2vw, 1.05rem);
-  --type-status: clamp(1rem, 3vw, 1.35rem);
 
   /* Shape / spacing */
   --radius-control: 8px;
@@ -60,8 +69,9 @@
     --ink: #1a1a1a;
     --phase-work: #2e7d32;
     --phase-work-hover: #1b5e20;
-    --phase-warning: #e65100;
-    --phase-warning-hover: #bf360c;
+    --phase-warning: #bf360c;
+    --phase-warning-hover: #8f2809;
+    --phase-warning-ember: #6b1c06;
     --phase-cooldown: #c62828;
     --phase-cooldown-hover: #b71c1c;
     --status-ink: #424242;
@@ -71,6 +81,13 @@
     --control-rest-hover: #eeeeee;
     --control-text: #212121;
     --focus-ring: #111111;
+    --action-work: #2e7d32;
+    --action-work-hover: #1b5e20;
+    --action-warning: #bf360c;
+    --action-warning-hover: #8f2809;
+    --on-action-warning: #ffffff;
+    --action-cooldown: #c62828;
+    --action-cooldown-hover: #b71c1c;
     --shadow-control: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-control-hover: 0 4px 8px rgba(0, 0, 0, 0.16);
     --shadow-active-work: 0 4px 8px rgba(46, 125, 50, 0.28);

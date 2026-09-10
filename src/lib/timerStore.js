@@ -1,34 +1,58 @@
 import { writable, derived } from 'svelte/store';
 
-// Timer states
 const TIMER_STATES = {
   IDLE: 'idle',
-  RUNNING: 'running', 
+  RUNNING: 'running',
   PAUSED: 'paused',
-  COMPLETED: 'completed',
   COOLDOWN: 'cooldown'
 };
 
-// Create timer store
+const DURATION_KEY = 'interval-timer-duration';
+const VALID_DURATIONS = new Set([120, 180]);
+
+function loadDuration() {
+  try {
+    const raw = localStorage.getItem(DURATION_KEY);
+    const n = Number(raw);
+    if (VALID_DURATIONS.has(n)) return n;
+  } catch {
+    // storage unavailable
+  }
+  return 120;
+}
+
+function saveDuration(duration) {
+  try {
+    localStorage.setItem(DURATION_KEY, String(duration));
+  } catch {
+    // storage unavailable
+  }
+}
+
 function createTimerStore() {
-  const DEFAULT_DURATION = 120;
+  const initialDuration = loadDuration();
   const { subscribe, set, update } = writable({
-    timeLeft: DEFAULT_DURATION,
-    timerDuration: DEFAULT_DURATION,
+    timeLeft: initialDuration,
+    timerDuration: initialDuration,
     state: TIMER_STATES.IDLE,
-    isCooldown: false
+    isCooldown: false,
+    roundsCompleted: 0
   });
 
   return {
     subscribe,
     set,
     update,
-    // Start the timer
     start: () => update(state => {
       if (state.state === TIMER_STATES.IDLE || state.state === TIMER_STATES.PAUSED) {
-        const timeLeft = state.isCooldown
-          ? 30
-          : (state.timeLeft > 0 ? state.timeLeft : state.timerDuration);
+        if (state.isCooldown) {
+          return {
+            ...state,
+            state: TIMER_STATES.COOLDOWN,
+            timeLeft: state.timeLeft > 0 ? state.timeLeft : 30
+          };
+        }
+        const timeLeft = state.timeLeft > 0 ? state.timeLeft : state.timerDuration;
         return {
           ...state,
           state: TIMER_STATES.RUNNING,
@@ -37,35 +61,26 @@ function createTimerStore() {
       }
       return state;
     }),
-    // Pause the timer
     pause: () => update(state => {
-      if (state.state === TIMER_STATES.RUNNING) {
+      if (state.state === TIMER_STATES.RUNNING || state.state === TIMER_STATES.COOLDOWN) {
         return { ...state, state: TIMER_STATES.PAUSED };
       }
       return state;
     }),
-    // Reset the timer (keeps the chosen work duration)
     reset: () => update(state => ({
       timeLeft: state.timerDuration,
       timerDuration: state.timerDuration,
       state: TIMER_STATES.IDLE,
-      isCooldown: false
+      isCooldown: false,
+      roundsCompleted: 0
     })),
-    // Set timer duration
     setDuration: (duration) => update(state => {
       if (state.state === TIMER_STATES.IDLE) {
+        saveDuration(duration);
         return { ...state, timerDuration: duration, timeLeft: duration };
       }
       return state;
     }),
-    // Start cooldown
-    startCooldown: () => update(state => ({
-      ...state,
-      state: TIMER_STATES.COOLDOWN,
-      isCooldown: true,
-      timeLeft: 30
-    })),
-    // Restart main timer after cooldown
     restartMainTimer: () => update(state => ({
       ...state,
       state: TIMER_STATES.RUNNING,
@@ -77,20 +92,33 @@ function createTimerStore() {
 
 export const timerStore = createTimerStore();
 
-// Derived store for formatted time display
 export const formattedTime = derived(timerStore, $timerStore => {
   const minutes = Math.floor($timerStore.timeLeft / 60);
   const seconds = $timerStore.timeLeft % 60;
   return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 });
 
-// Derived store for color state
+/** Idle is neutral — phase hues only for live work / warning / cooldown. */
 export const timerColor = derived(timerStore, $timerStore => {
-  if ($timerStore.isCooldown) {
-    return 'red';
-  } else if ($timerStore.timeLeft <= 30 && !$timerStore.isCooldown) {
-    return 'yellow';
-  } else {
-    return 'green';
-  }
+  if ($timerStore.state === 'idle') return 'neutral';
+  if ($timerStore.isCooldown) return 'red';
+  if ($timerStore.timeLeft <= 30) return 'yellow';
+  return 'green';
 });
+
+export const statusLabel = derived(
+  [timerStore, timerColor],
+  ([$timerStore, $timerColor]) => {
+    if ($timerStore.state === 'idle') return 'READY';
+    if ($timerStore.state === 'paused') {
+      if ($timerStore.isCooldown) return 'PAUSED · COOLDOWN';
+      if ($timerColor === 'yellow') return 'PAUSED · FINAL 30S';
+      return 'PAUSED';
+    }
+    if ($timerStore.isCooldown || $timerColor === 'red') return 'COOLDOWN';
+    if ($timerColor === 'yellow') return 'FINAL 30S';
+    return 'WORKOUT';
+  }
+);
+
+export const onboardVisible = writable(false);

@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-10T12:00:00.000Z",
+  "title": "Design System: Interval Timer",
+  "extensions": {
+    "colorMeta": {
+      "work-green": {
+        "role": "primary",
+        "displayName": "Work Green",
+        "canonical": "#4CAF50",
+        "tonalRamp": ["#1b5e20", "#2e7d32", "#388e3c", "#43a047", "#4caf50", "#66bb6a", "#81c784", "#a5d6a7"]
+      },
+      "work-green-hover": {
+        "role": "primary",
+        "displayName": "Work Green Hover",
+        "canonical": "#45a049",
+        "tonalRamp": ["#1b5e20", "#2e7d32", "#388e3c", "#45a049", "#4caf50", "#66bb6a", "#81c784", "#c8e6c9"]
+      },
+      "work-green-deep": {
+        "role": "primary",
+        "displayName": "Work Green Deep",
+        "canonical": "#2E7D32",
+        "tonalRamp": ["#0d3b14", "#1b5e20", "#2e7d32", "#388e3c", "#43a047", "#4caf50", "#81c784", "#c8e6c9"]
+      },
+      "warning-amber": {
+        "role": "secondary",
+        "displayName": "Warning Amber",
+        "canonical": "#FFC107",
+        "tonalRamp": ["#5d4037", "#8d6e00", "#b28704", "#e6ac00", "#ffc107", "#ffcd38", "#ffe082", "#fff8e1"]
+      },
+      "warning-amber-hover": {
+        "role": "secondary",
+        "displayName": "Warning Amber Hover",
+        "canonical": "#e6ac00",
+        "tonalRamp": ["#5d4037", "#8d6e00", "#b28704", "#e6ac00", "#ffc107", "#ffcd38", "#ffe082", "#fff8e1"]
+      },
+      "warning-amber-deep": {
+        "role": "secondary",
+        "displayName": "Warning Amber Deep",
+        "canonical": "#F57F17",
+        "tonalRamp": ["#3e2723", "#e65100", "#ef6c00", "#f57c00", "#f57f17", "#ff9800", "#ffb74d", "#ffe0b2"]
+      },
+      "cooldown-red": {
+        "role": "tertiary",
+        "displayName": "Cooldown Red",
+        "canonical": "#F44336",
+        "tonalRamp": ["#7f0000", "#b71c1c", "#c62828", "#d32f2f", "#e53935", "#f44336", "#ef5350", "#ffcdd2"]
+      },
+      "cooldown-red-hover": {
+        "role": "tertiary",
+        "displayName": "Cooldown Red Hover",
+        "canonical": "#d32f2f",
+        "tonalRamp": ["#7f0000", "#b71c1c", "#c62828", "#d32f2f", "#e53935", "#f44336", "#ef5350", "#ffcdd2"]
+      },
+      "cooldown-red-deep": {
+        "role": "tertiary",
+        "displayName": "Cooldown Red Deep",
+        "canonical": "#C62828",
+        "tonalRamp": ["#7f0000", "#b71c1c", "#c62828", "#d32f2f", "#e53935", "#f44336", "#ef9a9a", "#ffcdd2"]
+      },
+      "canvas-dark": {
+        "role": "neutral",
+        "displayName": "Canvas Dark",
+        "canonical": "#161616",
+        "tonalRamp": ["#000000", "#0d0d0d", "#161616", "#242424", "#2e2e2e", "#424242", "#757575", "#e0e0e0"]
+      },
+      "canvas-light": {
+        "role": "neutral",
+        "displayName": "Canvas Light",
+        "canonical": "#f4f4f4",
+        "tonalRamp": ["#e0e0e0", "#eeeeee", "#f4f4f4", "#f9f9f9", "#fafafa", "#ffffff", "#ffffff", "#ffffff"]
+      },
+      "ink-dark-canvas": {
+        "role": "neutral",
+        "displayName": "Ink on Dark",
+        "canonical": "rgba(255, 255, 255, 0.9)",
+        "tonalRamp": ["#212121", "#424242", "#616161", "#9e9e9e", "#bdbdbd", "#e0e0e0", "#f5f5f5", "#ffffff"]
+      },
+      "ink-light-canvas": {
+        "role": "neutral",
+        "displayName": "Ink on Light",
+        "canonical": "#1a1a1a",
+        "tonalRamp": ["#000000", "#121212", "#1a1a1a", "#212121", "#333333", "#424242", "#757575", "#bdbdbd"]
+      },
+      "control-rest": {
+        "role": "neutral",
+        "displayName": "Control Rest",
+        "canonical": "#f0f0f0",
+        "tonalRamp": ["#616161", "#9e9e9e", "#bdbdbd", "#e0e0e0", "#eeeeee", "#f0f0f0", "#f5f5f5", "#fafafa"]
+      },
+      "control-rest-hover": {
+        "role": "neutral",
+        "displayName": "Control Rest Hover",
+        "canonical": "#e0e0e0",
+        "tonalRamp": ["#616161", "#9e9e9e", "#bdbdbd", "#e0e0e0", "#eeeeee", "#f0f0f0", "#f5f5f5", "#fafafa"]
+      },
+      "control-text": {
+        "role": "neutral",
+        "displayName": "Control Text",
+        "canonical": "#242424",
+        "tonalRamp": ["#111111", "#212121", "#242424", "#333333", "#424242", "#616161", "#9e9e9e", "#bdbdbd"]
+      },
+      "status-ink-dark": {
+        "role": "neutral",
+        "displayName": "Status Ink (dark)",
+        "canonical": "#d0d0d0",
+        "tonalRamp": ["#424242", "#616161", "#757575", "#9e9e9e", "#bdbdbd", "#d0d0d0", "#e0e0e0", "#f5f5f5"]
+      },
+      "status-ink-light": {
+        "role": "neutral",
+        "displayName": "Status Ink (light)",
+        "canonical": "#424242",
+        "tonalRamp": ["#212121", "#333333", "#424242", "#616161", "#757575", "#9e9e9e", "#bdbdbd", "#e0e0e0"]
+      },
+      "focus-ring-dark": {
+        "role": "neutral",
+        "displayName": "Focus Ring (dark)",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#e0e0e0", "#eeeeee", "#f5f5f5", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"]
+      },
+      "focus-ring-light": {
+        "role": "neutral",
+        "displayName": "Focus Ring (light)",
+        "canonical": "#111111",
+        "tonalRamp": ["#000000", "#111111", "#1a1a1a", "#212121", "#333333", "#424242", "#616161", "#9e9e9e"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display Digits",
+        "purpose": "Countdown only; monospaced tabular instrument readout."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Global base."
+      },
+      "label": {
+        "displayName": "Status Label",
+        "purpose": "Uppercase phase word under the digits."
+      },
+      "control": {
+        "displayName": "Control",
+        "purpose": "START / PAUSE / RESET labels."
+      },
+      "duration": {
+        "displayName": "Duration",
+        "purpose": "2 MIN / 3 MIN chip labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "control-rest",
+        "value": "0 2px 4px rgba(0, 0, 0, 0.12)",
+        "purpose": "Default control depth."
+      },
+      {
+        "name": "control-hover",
+        "value": "0 4px 8px rgba(0, 0, 0, 0.22)",
+        "purpose": "Hover lift on controls."
+      },
+      {
+        "name": "active-work-glow",
+        "value": "0 4px 8px rgba(76, 175, 80, 0.35)",
+        "purpose": "Selected duration while idle on dark canvas."
+      },
+      {
+        "name": "beacon-glow",
+        "value": "0 0 12px currentColor",
+        "purpose": "Phase beacon strip glow (disabled under reduced motion)."
+      },
+      {
+        "name": "digit-legibility",
+        "value": "3px 3px 6px rgba(0, 0, 0, 0.3)",
+        "purpose": "Text-shadow on countdown digits."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "ease",
+        "purpose": "Control and digit color transitions (0.2–0.3s)."
+      },
+      {
+        "name": "pulse-warning",
+        "value": "pulse 1s infinite alternate (scale 1 → 1.05)",
+        "purpose": "Warning phase when prefers-reduced-motion is no-preference."
+      },
+      {
+        "name": "flash-cooldown",
+        "value": "flash 0.5s infinite alternate (opacity 1 → 0.8)",
+        "purpose": "Cooldown phase when prefers-reduced-motion is no-preference."
+      },
+      {
+        "name": "static-phase-outline",
+        "value": "3px solid currentColor outline",
+        "purpose": "Reduced-motion substitute for pulse/flash."
+      }
+    ],
+    "breakpoints": [
+      { "name": "xs", "value": "360px" },
+      { "name": "landscape-short", "value": "orientation: landscape and max-height: 500px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Phase Beacon + Timer Display",
+      "kind": "custom",
+      "refersTo": "timer-display",
+      "description": "Signature instrument: phase beacon strip, oversized mono digits, status chip.",
+      "html": "<div class=\"ds-timer\"><div class=\"ds-beacon green\"></div><div class=\"ds-timer-display green\">02:00</div><div class=\"ds-timer-status\">READY</div></div>",
+      "css": ".ds-timer{display:flex;flex-direction:column;align-items:center;gap:1rem;font-family:system-ui,Avenir,Helvetica,Arial,sans-serif}.ds-beacon{width:min(12rem,40vw);height:4px;border-radius:999px;background:currentColor;box-shadow:0 0 12px currentColor}.ds-beacon.green,.ds-timer-display.green{color:#4CAF50}.ds-beacon.yellow,.ds-timer-display.yellow{color:#FFC107}.ds-beacon.red,.ds-timer-display.red{color:#F44336}.ds-timer-display{font-family:'Courier New',Courier,monospace;font-size:clamp(4.5rem,30vw,18rem);font-weight:700;line-height:1;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:center;text-shadow:3px 3px 6px rgba(0,0,0,.3)}.ds-timer-status{font-size:clamp(1rem,3vw,1.35rem);font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#d0d0d0;padding:.5rem 1rem;border-radius:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18)}"
+    },
+    {
+      "name": "Duration Button",
+      "kind": "button",
+      "refersTo": "duration-btn",
+      "description": "Idle-only work length chip with aria-pressed.",
+      "html": "<button class=\"ds-duration-btn ds-duration-btn-active\" aria-pressed=\"true\">2 MIN</button> <button class=\"ds-duration-btn\" aria-pressed=\"false\">3 MIN</button>",
+      "css": ".ds-duration-btn{font-family:system-ui,Avenir,Helvetica,Arial,sans-serif;font-size:clamp(.85rem,2.2vw,1.05rem);font-weight:700;border:none;border-radius:8px;cursor:pointer;background:#f0f0f0;color:#242424;transition:all .2s ease;box-shadow:0 2px 4px rgba(0,0,0,.12);min-height:44px;padding:.65rem 1.2rem}.ds-duration-btn:hover:not(:disabled){background:#e0e0e0;transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,.22)}.ds-duration-btn:focus-visible{outline:3px solid #fff;outline-offset:2px}.ds-duration-btn:disabled{opacity:.45;cursor:not-allowed}.ds-duration-btn-active{background:#2E7D32;color:#fff;box-shadow:0 4px 8px rgba(46,125,50,.35)}"
+    },
+    {
+      "name": "Start Button",
+      "kind": "button",
+      "refersTo": "button-start",
+      "description": "Primary action to begin work interval.",
+      "html": "<button class=\"ds-btn-start\">START</button>",
+      "css": ".ds-btn-start{font-family:system-ui,Avenir,Helvetica,Arial,sans-serif;font-size:clamp(.9rem,2.5vw,1.15rem);font-weight:700;letter-spacing:.04em;border:none;border-radius:8px;cursor:pointer;background:#2E7D32;color:#fff;transition:all .2s ease;box-shadow:0 2px 4px rgba(0,0,0,.12);min-height:44px;padding:.85rem 1.4rem}.ds-btn-start:hover:not(:disabled){background:#1b5e20;transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,.22)}.ds-btn-start:focus-visible{outline:3px solid #fff;outline-offset:2px}.ds-btn-start:disabled{opacity:.45;cursor:not-allowed}"
+    },
+    {
+      "name": "Pause Button",
+      "kind": "button",
+      "refersTo": "button-pause",
+      "description": "Pause while running.",
+      "html": "<button class=\"ds-btn-pause\">PAUSE</button>",
+      "css": ".ds-btn-pause{font-family:system-ui,Avenir,Helvetica,Arial,sans-serif;font-size:clamp(.9rem,2.5vw,1.15rem);font-weight:700;letter-spacing:.04em;border:none;border-radius:8px;cursor:pointer;background:#F57F17;color:#fff;transition:all .2s ease;box-shadow:0 2px 4px rgba(0,0,0,.12);min-height:44px;padding:.85rem 1.4rem}.ds-btn-pause:hover:not(:disabled){background:#e65100;transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,.22)}.ds-btn-pause:focus-visible{outline:3px solid #fff;outline-offset:2px}.ds-btn-pause:disabled{opacity:.45;cursor:not-allowed}"
+    },
+    {
+      "name": "Reset Button",
+      "kind": "button",
+      "refersTo": "button-reset",
+      "description": "Stop loop and return to idle (duration preserved).",
+      "html": "<button class=\"ds-btn-reset\">RESET</button>",
+      "css": ".ds-btn-reset{font-family:system-ui,Avenir,Helvetica,Arial,sans-serif;font-size:clamp(.9rem,2.5vw,1.15rem);font-weight:700;letter-spacing:.04em;border:none;border-radius:8px;cursor:pointer;background:#F44336;color:#fff;transition:all .2s ease;box-shadow:0 2px 4px rgba(0,0,0,.12);min-height:44px;padding:.85rem 1.4rem}.ds-btn-reset:hover:not(:disabled){background:#d32f2f;transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,.22)}.ds-btn-reset:focus-visible{outline:3px solid #fff;outline-offset:2px}.ds-btn-reset:disabled{opacity:.45;cursor:not-allowed}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Gym Floor Beacon",
+    "overview": "Interval Timer is a single-surface workout instrument, not a productivity dashboard. Oversized mono digits dominate the viewport, a short phase beacon strip signals the active work/warning/cooldown state, and controls stay large, few, and low in the frame. Personality is direct, athletic, and glanceable—clarity under motion beats quiet sophistication.\n\nDensity is intentionally sparse: one non-scrolling full-viewport column, timer stage above, control deck below. Near-flat surfaces; hover lift and a digit text-shadow are the only resting-depth vocabulary. Motion marks urgency only (pulse on warning, flash on cooldown), with a static outline + beacon alternative under prefers-reduced-motion.",
+    "keyCharacteristics": [
+      "Full-viewport instrument layout (no scroll)",
+      "Phase color is state language (work / warning / cooldown)",
+      "Monospaced tabular digits, never mid-string wrapped",
+      "Controls are chunky, uppercase, ≥44px, with visible focus rings",
+      "Light and dark canvases each use composed phase values (deep variants on light)"
+    ],
+    "rules": [
+      {
+        "name": "The Phase Is Palette Rule",
+        "body": "Work/warning/cooldown hues are reserved for phase state and the matching control.",
+        "section": "colors"
+      },
+      {
+        "name": "The One State Color Rule",
+        "body": "Digits carry exactly one phase color at a time.",
+        "section": "colors"
+      },
+      {
+        "name": "The Composed Themes Rule",
+        "body": "Light mode is not an invert—phase values step deeper for contrast.",
+        "section": "colors"
+      },
+      {
+        "name": "The Digit Monopoly Rule",
+        "body": "Mono is for the countdown; labels stay in the system stack.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Instrument Rule",
+        "body": "Digits use tabular numerals and never wrap mid-string.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hover-Only Lift Rule",
+        "body": "No permanent elevated panels.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use CSS variables for phase/canvas/control roles.",
+      "Do keep digits nowrap + tabular-nums.",
+      "Do provide reduced-motion phase cues that still read as urgency.",
+      "Do keep ≥44px targets and visible focus rings.",
+      "Do use deeper phase hues on the light canvas."
+    ],
+    "donts": [
+      "Don't reintroduce Vite scaffold colors or page max-width chrome.",
+      "Don't rely on scale/opacity loops as the only phase signal.",
+      "Don't decorate with phase hues outside state/action meaning.",
+      "Don't break the countdown string across lines."
+    ]
+  }
+}
