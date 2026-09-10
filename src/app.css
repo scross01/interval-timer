@@ -4,8 +4,49 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+
+  /* Phase palette (Gym Floor Beacon) */
+  --phase-work: #4caf50;
+  --phase-work-hover: #45a049;
+  --phase-work-deep: #2e7d32;
+  --phase-warning: #ffc107;
+  --phase-warning-hover: #e6ac00;
+  --phase-warning-deep: #f57f17;
+  --phase-cooldown: #f44336;
+  --phase-cooldown-hover: #d32f2f;
+  --phase-cooldown-deep: #c62828;
+
+  /* Canvas + ink */
+  --canvas: #161616;
+  --ink: rgba(255, 255, 255, 0.9);
+  --control-rest: #f0f0f0;
+  --control-rest-hover: #e0e0e0;
+  --control-text: #242424;
+  --status-ink: #d0d0d0;
+  --status-chip-bg: rgba(255, 255, 255, 0.08);
+  --status-chip-border: rgba(255, 255, 255, 0.18);
+  --focus-ring: #ffffff;
+
+  /* Type roles */
+  --font-display: 'Courier New', Courier, monospace;
+  --font-ui: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --type-display-max: 18rem;
+  --type-display: clamp(4.5rem, 30vw, 18rem);
+  --type-display-landscape: clamp(3.5rem, 22vh, 12rem);
+  --type-display-xs: clamp(3.5rem, 26vw, 7rem);
+  --type-status: clamp(1rem, 3vw, 1.35rem);
+  --type-status-xs: clamp(0.85rem, 3.5vw, 1.1rem);
+  --type-control: clamp(0.9rem, 2.5vw, 1.15rem);
+  --type-duration: clamp(0.85rem, 2.2vw, 1.05rem);
+  --type-status: clamp(1rem, 3vw, 1.35rem);
+
+  /* Shape / spacing */
+  --radius-control: 8px;
+  --radius-status: 5px;
+  --touch-min: 44px;
+  --shadow-control: 0 2px 4px rgba(0, 0, 0, 0.12);
+  --shadow-control-hover: 0 4px 8px rgba(0, 0, 0, 0.22);
+  --shadow-active-work: 0 4px 8px rgba(76, 175, 80, 0.35);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,103 +54,66 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+@media (prefers-color-scheme: light) {
+  :root {
+    --canvas: #f4f4f4;
+    --ink: #1a1a1a;
+    --phase-work: #2e7d32;
+    --phase-work-hover: #1b5e20;
+    --phase-warning: #e65100;
+    --phase-warning-hover: #bf360c;
+    --phase-cooldown: #c62828;
+    --phase-cooldown-hover: #b71c1c;
+    --status-ink: #424242;
+    --status-chip-bg: rgba(0, 0, 0, 0.06);
+    --status-chip-border: rgba(0, 0, 0, 0.14);
+    --control-rest: #ffffff;
+    --control-rest-hover: #eeeeee;
+    --control-text: #212121;
+    --focus-ring: #111111;
+    --shadow-control: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-control-hover: 0 4px 8px rgba(0, 0, 0, 0.16);
+    --shadow-active-work: 0 4px 8px rgba(46, 125, 50, 0.28);
+  }
 }
 
+html,
 body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: var(--canvas);
+  color: var(--ink);
   touch-action: manipulation;
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  width: 100vw;
-  height: 100vh;
-}
-
-html {
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-.card {
-  padding: 2em;
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
 button {
-  border-radius: 8px;
+  font-family: var(--font-ui);
+  border-radius: var(--radius-control);
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
+
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-/* Interval Timer specific base styles - already handled above */
-
-/* Global animations that are shared across components */
-@keyframes pulse {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.05);
-  }
-}
-
-@keyframes flash {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0.8;
+@media (prefers-contrast: high) {
+  button:focus-visible {
+    outline-width: 4px;
   }
 }

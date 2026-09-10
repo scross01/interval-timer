@@ -11,12 +11,12 @@ const TIMER_STATES = {
 
 // Create timer store
 function createTimerStore() {
+  const DEFAULT_DURATION = 120;
   const { subscribe, set, update } = writable({
-    timeLeft: 0,
-    timerDuration: 120, // 2 minutes default
+    timeLeft: DEFAULT_DURATION,
+    timerDuration: DEFAULT_DURATION,
     state: TIMER_STATES.IDLE,
-    isCooldown: false,
-    colorState: 'green' // 'green', 'yellow', 'red'
+    isCooldown: false
   });
 
   return {
@@ -26,10 +26,13 @@ function createTimerStore() {
     // Start the timer
     start: () => update(state => {
       if (state.state === TIMER_STATES.IDLE || state.state === TIMER_STATES.PAUSED) {
+        const timeLeft = state.isCooldown
+          ? 30
+          : (state.timeLeft > 0 ? state.timeLeft : state.timerDuration);
         return {
           ...state,
           state: TIMER_STATES.RUNNING,
-          timeLeft: state.isCooldown ? 30 : state.timeLeft
+          timeLeft
         };
       }
       return state;
@@ -41,14 +44,13 @@ function createTimerStore() {
       }
       return state;
     }),
-    // Reset the timer
-    reset: () => set({
-      timeLeft: 0,
-      timerDuration: 120,
+    // Reset the timer (keeps the chosen work duration)
+    reset: () => update(state => ({
+      timeLeft: state.timerDuration,
+      timerDuration: state.timerDuration,
       state: TIMER_STATES.IDLE,
-      isCooldown: false,
-      colorState: 'green'
-    }),
+      isCooldown: false
+    })),
     // Set timer duration
     setDuration: (duration) => update(state => {
       if (state.state === TIMER_STATES.IDLE) {
@@ -61,16 +63,14 @@ function createTimerStore() {
       ...state,
       state: TIMER_STATES.COOLDOWN,
       isCooldown: true,
-      timeLeft: 30,
-      colorState: 'red'
+      timeLeft: 30
     })),
     // Restart main timer after cooldown
     restartMainTimer: () => update(state => ({
       ...state,
       state: TIMER_STATES.RUNNING,
       isCooldown: false,
-      timeLeft: state.timerDuration,
-      colorState: 'green'
+      timeLeft: state.timerDuration
     }))
   };
 }
